@@ -26,7 +26,7 @@
         kumomi#4d53
       </td>
       <td>
-        用户
+        用户名称
       </td>
     </tr>
     <tr>
@@ -42,7 +42,7 @@
         05a2fa1c
       </td>
       <td>
-        签名
+        指纹摘要
       </td>
     </tr>
     <tr class="br-space"></tr>
@@ -52,6 +52,15 @@
       </td>
       <td>
         健康
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>剩下</span>
+        <span id="tgt-time"></span>
+      </td>
+      <td>
+        脱机存储
       </td>
     </tr>
   </table>
@@ -107,10 +116,12 @@
 
 <script>
   var counter = 0;
+  var time = new Date().getTime();
   var h = document.getElementById("tgt-health");
   var n = document.getElementById("tgt-name");
+  var t = document.getElementById("tgt-time");
 
-  function blink() {
+  function main() {
     if (counter === 0) {
       h.innerText = "警告";
       n.innerText = "みさか　くもみ";
@@ -120,8 +131,17 @@
       n.innerText = "Misaka Kumomi";
       counter = 0;
     }
-    setTimeout(blink, 2000);
+    var to = new Date(time - new Date().getTime() + 3600 * 16);
+
+    function translate(o) {
+      return ((o.getHours() < 10) ? "0" : "") +
+        o.getHours() + (counter === 0 ? ":" : " ") + ((o.getMinutes() < 10) ? "0" : "") +
+        o.getMinutes();
+    }
+
+    t.innerText = translate(to);
   }
 
-  blink();
+  setInterval(main, 2000);
+
 </script>
