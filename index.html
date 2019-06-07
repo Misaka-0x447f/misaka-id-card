@@ -13,7 +13,7 @@
     Insider Access
   </div>
   <div class="br right"></div>
-  <div class="lower">
+  <div class="lower" id="tgt-name">
     Misaka Kumomi
   </div>
   <div class="huge name">
@@ -42,12 +42,12 @@
         05a2fa1c
       </td>
       <td>
-        指纹
+        签名
       </td>
     </tr>
     <tr class="br-space"></tr>
     <tr>
-      <td>
+      <td id="tgt-health">
         Degraded
       </td>
       <td>
@@ -63,7 +63,7 @@
   :root {
     font-size: 48px;
   }
-  
+
   body {
     font-family: "Microsoft JhengHei UI Light", sans-serif;
     line-height: 0.95;
@@ -72,14 +72,14 @@
   td {
     padding-left: 0.5em;
   }
-  
+
   .br {
     margin: 0.25rem 0;
     height: 0.1em;
     width: 10em;
     background: #000;
   }
-  
+
   .br-space {
     height: 0.25rem;
   }
@@ -104,3 +104,24 @@
     font-size: 2em;
   }
 </style>
+
+<script>
+  var counter = 0;
+  var h = document.getElementById("tgt-health");
+  var n = document.getElementById("tgt-name");
+
+  function blink() {
+    if (counter === 0) {
+      h.innerText = "警告";
+      n.innerText = "みさか　くもみ";
+      counter = 1;
+    } else {
+      h.innerText = "Degraded";
+      n.innerText = "Misaka Kumomi";
+      counter = 0;
+    }
+    setTimeout(blink, 2000);
+  }
+
+  blink();
+</script>
