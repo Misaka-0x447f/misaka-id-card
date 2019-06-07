@@ -26,7 +26,7 @@
         kumomi#4d53
       </td>
       <td>
-        用户名称
+        用户
       </td>
     </tr>
     <tr>
@@ -42,7 +42,7 @@
         05a2fa1c
       </td>
       <td>
-        指纹摘要
+        摘要
       </td>
     </tr>
     <tr class="br-space"></tr>
@@ -60,7 +60,7 @@
         <span id="tgt-time"></span>
       </td>
       <td>
-        脱机存储
+        脱机
       </td>
     </tr>
   </table>
@@ -131,17 +131,16 @@
       n.innerText = "Misaka Kumomi";
       counter = 0;
     }
-    var to = new Date(time - new Date().getTime() + 3600 * 16);
+    var to = new Date(time - new Date().getTime() + 1000 * 3600 * 13);
 
     function translate(o) {
-      return ((o.getHours() < 10) ? "0" : "") +
-        o.getHours() + (counter === 0 ? ":" : " ") + ((o.getMinutes() < 10) ? "0" : "") +
-        o.getMinutes();
+      return ((o.getUTCHours() < 10) ? "0" : "") +
+        o.getUTCHours() + (counter === 0 ? ":" : " ") + ((o.getUTCMinutes() < 10) ? "0" : "") +
+        o.getUTCMinutes();
     }
 
     t.innerText = translate(to);
   }
 
-  setInterval(main, 2000);
-
+  setInterval(main, 3500);
 </script>
